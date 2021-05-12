@@ -11,19 +11,24 @@ class Etre_vivant(object):
         return """Nom: {}
 Type:{}
 PVs:{}/{}
-{}""".format(self.name,self.type,self.pv,self.pvmax,self.description)
+{}
+""".format(self.name,self.type,self.pv,self.pvmax,self.description)
     def perdredespvs(self,pvsperdus: int)->int:
         "Si on pert des pvs, c'est là"
         self.pv=self.pv-pvsperdus
         if self.pv<=0:
             print(self,"est mort!")
-            return "mort"
+            return "mort",self.loot
         else:
             return self.pv
     def tuer(self)->bool:
         "Cette fonction tue instantanément n'importe quoi. Elle revoie les résultat (si la créature est bel et bien morte) en tant que booléen."
         a=self.perdredespvs(self.pv)
         return type(a) is str
-plik=Etre_vivant(37,"Plik","Univers",[],"L'entité univers, représentant l'ordre, le nature, et la vérité.")
 
-print(plik)
+
+listeetresvivants=[]
+plik=Etre_vivant(37,"Plik","Univers",[],"L'entité univers, représentant l'ordre, le nature, et la vérité.")
+listeetresvivants.append(plik)
+mouton1=Etre_vivant(10,"Mouton",loot=[("viande",100,1,5),("laine",100,1,2)])
+print(listeetresvivants)
